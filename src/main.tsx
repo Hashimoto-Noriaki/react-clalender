@@ -7,7 +7,7 @@ import './styles/output.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <div className="flex items-center justify-center h-screen">
-      <h1 className="text-5xl font-bold underline">ハロー</h1>
+      <h1 className="text-5xl font-bold underline">React練習</h1>
     </div>
   </React.StrictMode>,
 )
