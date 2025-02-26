@@ -1,4 +1,5 @@
 import { NotLoginLayout } from '../templates/NotLoginLayout';
+import { PrimaryBtn } from '../atoms/PrimaryBtn.tsx';
 
 export const TopPage = () => {
   return (
@@ -9,9 +10,7 @@ export const TopPage = () => {
                 <p className="text-5xl pt-[20vh]">
                     スケジュール管理をする
                 </p>
-                <div className="pt-[20vh]">
-                    <button className="bg-lime-800 text-white rounded-lg p-4 text-lg">ログイン</button>
-                </div>
+                <PrimaryBtn>ログイン</PrimaryBtn>
             </div>
         </main>
     </NotLoginLayout>
