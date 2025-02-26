@@ -570,6 +570,14 @@ video {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
