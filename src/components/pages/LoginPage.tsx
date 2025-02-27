@@ -7,15 +7,17 @@ export const LoginPage = () => {
             <h1 className="text-3xl font-bold text-lime-800 text-center">
                 ログイン
             </h1>
-            <div>
+            <div className="w-[80%]">
                 <input
                     type="text"
+                    className="w-full border-4 border-solid border-lime-800 rounded-md p-2"
                     placeholder="メールアドレス"
                 />
             </div>
-            <div>
+            <div className="w-[80%]">
                 <input
                     type="password"
+                    className="w-full border-4 border-solid border-lime-800 rounded-md p-2"
                     placeholder="パスワード"
                 />
             </div>
