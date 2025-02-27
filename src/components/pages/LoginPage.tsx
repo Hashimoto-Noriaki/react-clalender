@@ -2,9 +2,9 @@ import { PrimaryBtn } from '../atoms/PrimaryBtn'
 
 export const LoginPage = () => {
   return (
-    <div>
-        <form>
-            <h1>
+    <div className="w-[500px] bg-white rounded-lg shadow-lg py-10">
+        <form className="flex flex-col justify-center items-center gap-10">
+            <h1 className="text-3xl font-bold text-lime-800 text-center">
                 ログイン
             </h1>
             <div>
