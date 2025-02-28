@@ -1,6 +1,6 @@
 export type LoginInfoType = {
     email:string;
-    pasword:string;
+    password:string;
 }
 
 export type LoginReturnType = {
