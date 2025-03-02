@@ -12,11 +12,13 @@ export const LoginPage = () => {
 
     const [errorMessage,setErrorMessage] = useState("")
 
+    //入力値をリアルタイムで loginInfo に反映。ユーザーがemailやpasswordを入力するとき
     const changeLoginInfo = (event: ChangeEvent<HTMLInputElement>)=> {
-        const { name,value } = event.target;
-        setLoginInfo({...loginInfo,[name]:value})
+        const { name,value } = event.target;//event.target は 変更があった <input> 要素name → 変更された <input> の name 属性（"email" または "password"） value → 変更された <inp ut> の入力値
+        setLoginInfo({...loginInfo,[name]:value})//スプレッド構文 ({ ...loginInfo }) を使って、既存のデータをコピー。[name]: value によって、email または password だけを更新
     }
 
+    //ログイン処理を実行 ログインボタンが押されたとき
     const handleLogin = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         setErrorMessage("")
