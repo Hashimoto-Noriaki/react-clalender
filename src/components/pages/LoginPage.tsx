@@ -31,7 +31,7 @@ export const LoginPage = () => {
     <div className="w-[500px] bg-white rounded-lg shadow-lg py-10">
         <form className="flex flex-col justify-center items-center gap-10" onSubmit={handleLogin}>
             <h1 className="text-lime-800 font-bold text-3xl text-center">ログイン</h1>
-            {errorMessage !== "" && (
+            {errorMessage !== "" && (//エラーがない (errorMessage = "")時は 画面に何も表示されない
                 <div className="bg-red-500 text-white p-5 w-[80%] rounded-lg">
                     {errorMessage}
                 </div>
