@@ -14,8 +14,8 @@ export const LoginPage = () => {
 
     //入力値をリアルタイムで loginInfo に反映。ユーザーがemailやpasswordを入力するとき
     const changeLoginInfo = (event: ChangeEvent<HTMLInputElement>)=> {
-        const { name,value } = event.target;//event.target は 変更があった <input> 要素name → 変更された <input> の name 属性（"email" または "password"） value → 変更された <inp ut> の入力値
-        setLoginInfo({...loginInfo,[name]:value})//スプレッド構文 ({ ...loginInfo }) を使って、既存のデータをコピー。[name]: value によって、email または password だけを更新
+        const { name,value } = event.target;//event.target.name と event.target.value を 一行で取得。
+        setLoginInfo({...loginInfo,[name]:value})//スプレッド構文 ({ ...loginInfo }) を使って、元のデータを保持しつつnameに対応する部分だけ更新。[name]: valueを使うことで、emailかpasswordかを判断
     }
 
     //ログイン処理を実行 ログインボタンが押されたとき
