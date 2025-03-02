@@ -13,7 +13,8 @@
     "destyle.css": "^4.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.2.0"
+    "react-router-dom": "^7.2.0",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
