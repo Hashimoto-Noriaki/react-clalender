@@ -1,10 +1,13 @@
-import { ChangeEvent,useState } from 'react'
+import { ChangeEvent,FormEvent,useState } from 'react'
 import { PrimaryBtn } from "../atoms/PrimaryBtn";
+import { useSetRecoilState } from 'recoil'
 import { Input } from '../atoms/Input';
 import { login } from '../../api/login'
 import { LoginInfoType } from '../../types/login'
+import { loginUserState } from '../../store/loginUserState'
 
 export const LoginPage = () => {
+    const setLoginUser = useSetRecoilState(loginUserState)
     const [loginInfo,setLoginInfo] = useState<LoginInfoType>({
         email:"",
         password:"",
@@ -23,7 +26,8 @@ export const LoginPage = () => {
         event.preventDefault()
         setErrorMessage("")
         try {
-            login(loginInfo)
+            const resUser= login(loginInfo)
+            setLoginUser({id:resUser.id, name:resUser.name})
         } catch {
             setErrorMessage("ログインに失敗しました。")
         }
