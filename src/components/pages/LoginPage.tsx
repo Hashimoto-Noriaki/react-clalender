@@ -1,10 +1,15 @@
 import { ChangeEvent,FormEvent,useState } from 'react'
+import { useSetRecoilState } from 'recoil'
+import { useNavigate } from 'react-router-dom'
 import { Input } from '../atoms/Input'
 import { PrimaryBtn } from '../atoms/PrimaryBtn'
 import { LoginInfoType } from '../../types/login'
 import { login } from '../../api/login'
+import { loginUserState } from '../../store/loginUserState'
 
 export const LoginPage = () => {
+    const navigate = useNavigate()
+    const setLoginUser = useSetRecoilState(loginUserState)
     const [loginInfo,setLoginInfo] = useState<LoginInfoType>({
         email:"",
         password:"",
@@ -21,7 +26,9 @@ export const LoginPage = () => {
         event.preventDefault()//ォーム送信やリンクのデフォルトの動作を防ぐための JavaScript のメソッド
         setErrorMessage("")
         try {
-            login(loginInfo)
+            const resUser = login(loginInfo)
+            setLoginUser({id:resUser.id, name:resUser.name})
+            navigate("/calendar")
         } catch {
             setErrorMessage("ログイン失敗しました。")
         }
