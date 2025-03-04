@@ -1,6 +1,8 @@
 import { Link,Outlet,useNavigate } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { loginUserState } from '../../store/loginUserState'; 
+import { FaUser } from 'react-icons/fa';
+import { MdLogOut } from 'react-icons/fa';
 
 export const LoginLayout = () => {
     const navigate = useNavigate()
@@ -20,8 +22,12 @@ export const LoginLayout = () => {
             </p>
             <nav>
                 <ul className="flex justify-center gap-5 text-lime-800">
-                    <li className="flex items-center">{loginUser.name}</li>
                     <li className="flex items-center">
+                        <FaUser/>
+                        {loginUser.name}
+                    </li>
+                    <li className="flex items-center">
+                        <MdLogOut/>
                         <a onClick={handleLogout}>ログアウト</a>
                     </li>
                 </ul>
