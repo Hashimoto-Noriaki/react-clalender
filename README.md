@@ -18,4 +18,10 @@ https://zenn.dev/yoneya/articles/f6b1c0aa982bbd
 
 https://react-icons.github.io/react-icons/
 
+### 1ヶ月カレンダーを作るためにdate-fnsを使用
+```
+npm i date-fns
+```
+### 状態管理
+recoil
 
