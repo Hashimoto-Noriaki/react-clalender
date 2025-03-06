@@ -641,6 +641,10 @@ video {
   width: 100%;
 }
 
+.w-\[150\%\] {
+  width: 150%;
+}
+
 .table-fixed {
   table-layout: fixed;
 }
@@ -755,6 +759,11 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .pt-\[20vh\] {
