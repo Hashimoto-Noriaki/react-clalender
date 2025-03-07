@@ -1,4 +1,4 @@
-import { ChangeEvent,FormEvent,useState } from 'react'
+import { FormEvent,useState } from 'react'
 import { useSetRecoilState } from 'recoil'
 import {  useNavigate } from 'react-router-dom'
 import { PrimaryBtn } from "../atoms/PrimaryBtn";
@@ -25,8 +25,8 @@ export const LoginPage = () => {
 
     //ログイン処理を実行 ログインボタンが押されたとき
     const handleLogin = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
         setErrorMessage("")
+        event.preventDefault()
         try {
             const resUser= login(loginInfo)
             setLoginUser({id:resUser.id, name:resUser.name})
