@@ -38,7 +38,7 @@ export const LoginPage = () => {
 
     return (
         <div className="w-[500px] bg-white rounded-lg shadow-lg py-10">
-            <form className="flex flex-col justify-center items-center gap-10" onClick={handleLogin}>
+            <form className="flex flex-col justify-center items-center gap-10" onSubmit={handleLogin}>
             <h1 className="text-3xl text-lime-800 font-bold text-center">
                 ログイン
             </h1>
