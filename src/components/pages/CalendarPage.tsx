@@ -2,24 +2,24 @@ import { getMonth, eachWeekOfInterval, startOfMonth, endOfMonth, eachDayOfInterv
 import { useEffect, useState } from 'react';
 import { CalendarHeader } from '../organisms/CalendarHeader'
 import { CalendarBody } from '../organisms/CalendarBody'
+import { DateList, Schedule } from "../../types/calendar";
 import { getScheduleList } from '../../api/calendar'
 
 export const CalendarPage = () => {
     const today = new Date();
-    const [dateList, setDateList] = useState<Date[][]>([]);
+    const [dateList, setDateList] = useState<DateList>([]);
 
     useEffect(() => {
         const monthOfSundayList = eachWeekOfInterval({
             start: startOfMonth(today),
             end: endOfMonth(today),
         });
-
         // 各週の日付リストを作成
-        const newDateList = monthOfSundayList.map((date) => {
+        const newDateList: DateList = monthOfSundayList.map((date) => {
             return eachDayOfInterval({
                 start: date,
                 end: endOfWeek(date),
-            });
+            }).map((date) => ({date, schedules: [] as Schedule[]    }));
         });
 
         const scheduleList = getScheduleList()

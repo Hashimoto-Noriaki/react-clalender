@@ -4,3 +4,8 @@ export type Schedule = {
     title: string;
     description: string;
 };
+
+export type DateList = {
+    date: Date;
+    schedules: Schedule[]
+}[][]
