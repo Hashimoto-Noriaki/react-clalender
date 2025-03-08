@@ -1,6 +1,7 @@
 import { getMonth, eachWeekOfInterval, startOfMonth, endOfMonth, eachDayOfInterval, endOfWeek } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { CalendarHeader } from '../organisms/CalendarHeader'
+import { CalendarBody } from '../organisms/CalendarBody'
 
 export const CalendarPage = () => {
     const today = new Date();
