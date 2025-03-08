@@ -1,7 +1,8 @@
-import { getMonth, eachWeekOfInterval, startOfMonth, endOfMonth, eachDayOfInterval, endOfWeek } from 'date-fns';
+import { getMonth, eachWeekOfInterval, startOfMonth, endOfMonth, eachDayOfInterval, endOfWeek,isSameDay } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { CalendarHeader } from '../organisms/CalendarHeader'
 import { CalendarBody } from '../organisms/CalendarBody'
+import { getScheduleList } from '../../api/calendar'
 
 export const CalendarPage = () => {
     const today = new Date();
@@ -20,8 +21,24 @@ export const CalendarPage = () => {
                 end: endOfWeek(date),
             });
         });
-        setDateList(newDateList);
-    }, [today]);
+
+        const scheduleList = getScheduleList()
+            scheduleList.forEach((schedule) => {
+                const firstIndex = newDateList.findIndex((oneWeek) =>
+                    oneWeek.some((item) => isSameDay(item.date, schedule.date))
+                )
+                if(firstIndex === -1) return;
+                const secondIndex = newDateList[firstIndex].findIndex((item) =>
+                    isSameDay(item.date,schedule.date)
+                )
+
+                newDateList[firstIndex][secondIndex].schedules = [
+                    ...newDateList[firstIndex][secondIndex].schedules,
+                    schedule,
+                ]
+            })
+            setDateList(newDateList);
+    },  []);
 
     return (
         <>
