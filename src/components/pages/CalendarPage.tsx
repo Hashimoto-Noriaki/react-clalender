@@ -1,52 +1,19 @@
-import { getMonth, eachWeekOfInterval, startOfMonth, endOfMonth, eachDayOfInterval, endOfWeek,isSameDay } from 'date-fns';
-import { useEffect, useState } from 'react';
-import { CalendarHeader } from '../organisms/CalendarHeader'
-import { CalendarBody } from '../organisms/CalendarBody'
-import { DateList, Schedule } from "../../types/calendar";
-import { getScheduleList } from '../../api/calendar'
+import { getMonth} from "date-fns";
+import { CalendarHeader } from "../organisms/CalendarHeader";
+import { CalendarBody } from "../organisms/CalendarBody";
+import { useCalendar } from "../../hooks/useCalendar";
 
 export const CalendarPage = () => {
-    const today = new Date();
-    const [dateList, setDateList] = useState<DateList>([]);
+  const today = new Date()
+  const { dateList } = useCalendar({ currentDate: today })
 
-    useEffect(() => {
-        const monthOfSundayList = eachWeekOfInterval({
-            start: startOfMonth(today),
-            end: endOfMonth(today),
-        });
-        // 各週の日付リストを作成
-        const newDateList: DateList = monthOfSundayList.map((date) => {
-            return eachDayOfInterval({
-                start: date,
-                end: endOfWeek(date),
-            }).map((date) => ({date, schedules: [] as Schedule[]    }));
-        });
-
-        const scheduleList = getScheduleList()
-            scheduleList.forEach((schedule) => {
-                const firstIndex = newDateList.findIndex((oneWeek) =>
-                    oneWeek.some((item) => isSameDay(item.date, schedule.date))
-                )
-                if(firstIndex === -1) return;
-                const secondIndex = newDateList[firstIndex].findIndex((item) =>
-                    isSameDay(item.date,schedule.date)
-                )
-
-                newDateList[firstIndex][secondIndex].schedules = [
-                    ...newDateList[firstIndex][secondIndex].schedules,
-                    schedule,
-                ]
-            })
-            setDateList(newDateList);
-    },  []);
-
-    return (
-        <>
-            <h1 className="font-bold text-3xl mb-5">{`${getMonth(today) + 1}月`}</h1>
-            <table className="w-[80%] border-lime-800 border-solid border-2 border-collapse table-fixed">
-                <CalendarHeader/>
-                <CalendarBody currentDate={today} dateList={dateList}/>
-            </table>
-        </>
-    );
-};
+  return (
+    <>
+      <h1 className=" font-bold text-3xl mb-5">{`${getMonth(today) + 1}月`}</h1>
+      <table className="w-[80%] border-collapse border-2 border-solid border-lime-800 table-fixed">
+        <CalendarHeader />
+        <CalendarBody currentDate={today} dateList={dateList} />
+      </table>
+    </>
+  )
+}
