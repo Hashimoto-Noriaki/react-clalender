@@ -8,7 +8,7 @@ export const TopPage = () => {
       <h1 className="logo text-7xl">スケジュール管理APP</h1>
       <p className="text-5xl pt-[20vh]">スケジュールの管理をします。</p>
       <div className="pt-[20vh]">
-        <PrimaryBtn onClick={() => navigate("/login")}>ログイン</PrimaryBtn>
+        <PrimaryBtn size="lg" onClick={() => navigate("/login")}>ログイン</PrimaryBtn>
       </div>
     </div>
   )
