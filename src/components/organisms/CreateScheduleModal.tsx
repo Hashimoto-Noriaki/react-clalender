@@ -1,6 +1,7 @@
 import Modal from 'react-modal'
 import { ChangeEvent,useState } from 'react'
 import { format } from "date-fns";
+import { Input } from '../atoms/Input'
 import { NewSchedule } from "../../types/calendar";
 import { PrimaryBtn } from '../atoms/PrimaryBtn'
 
@@ -47,21 +48,37 @@ export const CreateScheduleModal = ({
                 </h3>
                 <form>
                     <div>
-                        <label>タイトル</label>
-                        <Input/>
+                        <label htmlFor="title-form" className="text-lime-800 w-[30%]">タイトル</label>
+                        <Input
+                            id="title-form"
+                            name="title"
+                            type="text"
+                            value={newSchedule.title}
+                            onChange={changeNewSchedule}
+                        />
                     </div>
                     <div>
-                        <label>日付</label>
-                        <Input/>
+                        <label htmlFor="date-form" className="text-lime-800 w-[30%]">日付</label>
+                        <Input
+                            id="date-form"
+                            name="date"
+                            type="date"
+                            value={newSchedule.date}
+                            onChange={changeNewSchedule}
+                        />
                     </div>
                     <div>
-                        <label>内容</label>
-                        <Input/>
+                        <label htmlForm="description-form" className="text-lime-800 w-[30%]">内容</label>
                         <textarea 
+                            id="description-form"
+                            name="description"
+                            type="text"
+                            value={newSchedule.description}
+                            onChange={changeNewSchedule}
                             placeholder="入力"
                         />
                     </div>
-                    <PrimaryBtn>
+                    <PrimaryBtn size="lg" onClick={() => null}>
                         作成
                     </PrimaryBtn>
                 </form>
