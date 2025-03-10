@@ -9,7 +9,7 @@ export const TopPage = () => {
         <p className="text-5xl pt-[20vh]">
             スケジュール管理をする
         </p>
-        <PrimaryBtn onClick={() => navigate("/login")}>ログイン</PrimaryBtn>
+        <PrimaryBtn size="lg" onClick={() => navigate("/login")}>ログイン</PrimaryBtn>
     </div>
   )
 }
