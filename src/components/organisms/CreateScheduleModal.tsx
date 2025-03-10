@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { Input } from '../atoms/Input'
 import { NewSchedule } from "../../types/calendar";
 import { PrimaryBtn } from '../atoms/PrimaryBtn'
+import { Textarea } from '../atoms/Textarea'
 
 type PropsType = {
     isOpen: boolean;
@@ -46,8 +47,8 @@ export const CreateScheduleModal = ({
                 <h3 className="text-lime-800 text-center text-3xl pb-5 font-bold">
                     予定作成
                 </h3>
-                <form>
-                    <div>
+                <form className="flex flex-col gap-8">
+                    <div className="flex items-center w-[100%]">
                         <label htmlFor="title-form" className="text-lime-800 w-[30%]">タイトル</label>
                         <Input
                             id="title-form"
@@ -57,7 +58,7 @@ export const CreateScheduleModal = ({
                             onChange={changeNewSchedule}
                         />
                     </div>
-                    <div>
+                    <div className="w-[100%] flex item-center">
                         <label htmlFor="date-form" className="text-lime-800 w-[30%]">日付</label>
                         <Input
                             id="date-form"
@@ -67,20 +68,19 @@ export const CreateScheduleModal = ({
                             onChange={changeNewSchedule}
                         />
                     </div>
-                    <div>
+                    <div className="w-[100%] flex item-center">
                         <label htmlForm="description-form" className="text-lime-800 w-[30%]">内容</label>
-                        <textarea 
-                            id="description-form"
+                        <Textarea
                             name="description"
-                            type="text"
                             value={newSchedule.description}
                             onChange={changeNewSchedule}
-                            placeholder="入力"
                         />
                     </div>
-                    <PrimaryBtn size="lg" onClick={() => null}>
-                        作成
-                    </PrimaryBtn>
+                    <div className="flex justify-center">
+                        <PrimaryBtn size="lg" onClick={() => null}>
+                            作成
+                        </PrimaryBtn>
+                    </div>
                 </form>
             </div>
         </Modal>
