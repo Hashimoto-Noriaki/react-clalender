@@ -2,6 +2,7 @@ import Modal from 'react-modal'
 import { ChangeEvent,useState } from 'react'
 import { format } from "date-fns";
 import { NewSchedule } from "../../types/calendar";
+import { PrimaryBtn } from '../atoms/PrimaryBtn'
 
 type PropsType = {
     isOpen: boolean;
@@ -44,6 +45,26 @@ export const CreateScheduleModal = ({
                 <h3 className="text-lime-800 text-center text-3xl pb-5 font-bold">
                     予定作成
                 </h3>
+                <form>
+                    <div>
+                        <label>タイトル</label>
+                        <Input/>
+                    </div>
+                    <div>
+                        <label>日付</label>
+                        <Input/>
+                    </div>
+                    <div>
+                        <label>内容</label>
+                        <Input/>
+                        <textarea 
+                            placeholder="入力"
+                        />
+                    </div>
+                    <PrimaryBtn>
+                        作成
+                    </PrimaryBtn>
+                </form>
             </div>
         </Modal>
     )

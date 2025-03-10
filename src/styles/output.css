@@ -666,6 +666,14 @@ video {
   width: 100%;
 }
 
+.w-\[100\%\] {
+  width: 100%;
+}
+
+.w-\[30\%\] {
+  width: 30%;
+}
+
 .table-fixed {
   table-layout: fixed;
 }
