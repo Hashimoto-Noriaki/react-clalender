@@ -1,4 +1,7 @@
 import Modal from 'react-modal'
+import { ChangeEvent,useState } from 'react'
+import { format } from "date-fns";
+import { NewSchedule } from "../../types/calendar";
 
 type PropsType = {
     isOpen: boolean;
@@ -19,6 +22,22 @@ export const CreateScheduleModal = ({
     isOpen,
     closeModal,
 }: PropsType) => {
+    const [newSchedule,setNewSchedule] = useState<NewSchedule>({
+        title:"",
+        date: format(new Date(),"yy-MM--dd"),
+        description: "",
+    });
+
+    const changeNewSchedule = (
+        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> 
+    ) => {
+        const { name,value } = event.target;//変更された name と value を取得
+        setNewSchedule({...newSchedule,[name]: value})
+        //{ ...newSchedule } → 今までの newSchedule のデータをコピー
+        //[name]: value → 変更があった name の値だけ value に更新
+        //他のデータはそのまま保持される！
+    }
+
     return (
         <Modal isOpen={isOpen} style={customStyles} onRequestClose={closeModal}>
             <div>

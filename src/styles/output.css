@@ -811,20 +811,16 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .pt-\[20vh\] {
   padding-top: 20vh;
 }
 
 .pt-\[50px\] {
   padding-top: 50px;
-}
-
-.pb-5 {
-  padding-bottom: 1.25rem;
-}
-
-.pb-1 {
-  padding-bottom: 0.25rem;
 }
 
 .text-center {
