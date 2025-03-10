@@ -1,4 +1,10 @@
 import Modal from 'react-modal'
+import { ChangeEvent,useState } from 'react'
+import { format } from "date-fns";
+import { Input } from '../atoms/Input'
+import { NewSchedule } from "../../types/calendar";
+import { PrimaryBtn } from '../atoms/PrimaryBtn'
+import { Textarea } from '../atoms/Textarea'
 
 type PropsType = {
     isOpen: boolean;
@@ -19,12 +25,63 @@ export const CreateScheduleModal = ({
     isOpen,
     closeModal,
 }: PropsType) => {
+    const [newSchedule,setNewSchedule] = useState<NewSchedule>({
+        title:"",
+        date: format(new Date(),"yy-MM--dd"),
+        description: "",
+    });
+
+    const changeNewSchedule = (
+        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> 
+    ) => {
+        const { name,value } = event.target;//変更された name と value を取得
+        setNewSchedule({...newSchedule,[name]: value})
+        //{ ...newSchedule } → 今までの newSchedule のデータをコピー
+        //[name]: value → 変更があった name の値だけ value に更新
+        //他のデータはそのまま保持される！
+    }
+
     return (
         <Modal isOpen={isOpen} style={customStyles} onRequestClose={closeModal}>
             <div>
                 <h3 className="text-lime-800 text-center text-3xl pb-5 font-bold">
                     予定作成
                 </h3>
+                <form className="flex flex-col gap-8">
+                    <div className="flex items-center w-[100%]">
+                        <label htmlFor="title-form" className="text-lime-800 w-[30%]">タイトル</label>
+                        <Input
+                            id="title-form"
+                            name="title"
+                            type="text"
+                            value={newSchedule.title}
+                            onChange={changeNewSchedule}
+                        />
+                    </div>
+                    <div className="w-[100%] flex item-center">
+                        <label htmlFor="date-form" className="text-lime-800 w-[30%]">日付</label>
+                        <Input
+                            id="date-form"
+                            name="date"
+                            type="date"
+                            value={newSchedule.date}
+                            onChange={changeNewSchedule}
+                        />
+                    </div>
+                    <div className="w-[100%] flex item-center">
+                        <label htmlForm="description-form" className="text-lime-800 w-[30%]">内容</label>
+                        <Textarea
+                            name="description"
+                            value={newSchedule.description}
+                            onChange={changeNewSchedule}
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <PrimaryBtn size="lg" onClick={() => null}>
+                            作成
+                        </PrimaryBtn>
+                    </div>
+                </form>
             </div>
         </Modal>
     )
