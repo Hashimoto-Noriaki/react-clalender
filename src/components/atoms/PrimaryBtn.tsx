@@ -1,16 +1,22 @@
 import ReactNode from 'react'
 
 type PropsType = {
+    size: "sm | lg";
     onClick:() => void;
     children:ReactNode;
 }
 
-export const PrimaryBtn = ({ onClick,children }: PropsType) => {
+const SIZE_MAPPING = {
+  sm: "p-2 text-sm",
+  lg: "p-4 text-lg"
+}
+
+export const PrimaryBtn = ({ size, onClick, children }: PropsType) => {
   return (
-    <div className="pt-[50px]">
-      <button className="bg-lime-800 text-white rounded-lg p-4 text-lg" onClick={onClick}>
-          { children }
-      </button>
-    </div>
+    <button className={`bg-lime-800 text-white rounded-lg ${SIZE_MAPPING[size]}`} 
+            onClick={onClick}
+    >
+      { children }
+    </button>
   )
 }
